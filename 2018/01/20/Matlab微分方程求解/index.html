@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="Home">
 <meta property="og:description" content="More">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i2.bvimg.com/628244/30151a18f54e22e0.png">
-<meta property="og:updated_time" content="2018-01-20T14:43:29.406Z">
+<meta property="og:image" content="http://p33egoprn.bkt.clouddn.com/SIR.jpg">
+<meta property="og:updated_time" content="2018-02-02T12:02:25.977Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Matlab微分方程求解 ">
 <meta name="twitter:description" content="More">
-<meta name="twitter:image" content="http://i2.bvimg.com/628244/30151a18f54e22e0.png">
+<meta name="twitter:image" content="http://p33egoprn.bkt.clouddn.com/SIR.jpg">
 
 
 
@@ -303,7 +303,7 @@
       
         <p>More</p>
 <a id="more"></a>
-<p><img src="http://i2.bvimg.com/628244/30151a18f54e22e0.png" alt="微分方程组"></p>
+<p><img src="http://p33egoprn.bkt.clouddn.com/SIR.jpg" alt="微分方程组"></p>
 <h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">s = <span class="number">0.98</span>;</span><br><span class="line">e = <span class="number">0.0</span>;</span><br><span class="line"><span class="built_in">i</span> = <span class="number">0.02</span>;</span><br><span class="line">r = <span class="number">0.0</span>;</span><br><span class="line">f = <span class="number">0.05</span>;</span><br><span class="line"><span class="built_in">beta</span> = <span class="number">10</span>;</span><br><span class="line"><span class="built_in">gamma</span> = <span class="number">0.8</span>;</span><br><span class="line">rou = <span class="number">0.1</span>;</span><br><span class="line">s1 = s;</span><br><span class="line">e1 = e;</span><br><span class="line">i1 = <span class="built_in">i</span>;</span><br><span class="line">r1 = r;</span><br><span class="line">x = <span class="number">1</span>:<span class="number">1</span>:<span class="number">650</span>;</span><br><span class="line">y = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">650</span>);</span><br><span class="line">z = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">650</span>);</span><br><span class="line">w = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">650</span>);</span><br><span class="line">v = <span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">650</span>);</span><br><span class="line">dt = <span class="number">0.04</span>;</span><br><span class="line">y(<span class="number">1</span>) = s;</span><br><span class="line">w(<span class="number">1</span>) = e;</span><br><span class="line">z(<span class="number">1</span>) = <span class="built_in">i</span>;</span><br><span class="line">v(<span class="number">1</span>) = r;</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">j</span> = <span class="number">1</span>:<span class="number">650</span></span><br><span class="line">    s1 = s - <span class="built_in">beta</span>*s*<span class="built_in">i</span>*dt;</span><br><span class="line">    e1 = e + (<span class="built_in">beta</span>*s*<span class="built_in">i</span>-rou*e)*dt;</span><br><span class="line">    i1 = <span class="built_in">i</span> + (rou*e-<span class="built_in">gamma</span>*<span class="built_in">i</span>)*dt;</span><br><span class="line">    r1 = r + (<span class="number">1</span>-f)*<span class="built_in">gamma</span>*<span class="built_in">i</span>*dt;</span><br><span class="line">    y(<span class="built_in">j</span>) = s1;</span><br><span class="line">    w(<span class="built_in">j</span>) = e1;</span><br><span class="line">    z(<span class="built_in">j</span>) = i1;</span><br><span class="line">    v(<span class="built_in">j</span>) = r1;</span><br><span class="line">    s = s1;</span><br><span class="line">    e = e1;</span><br><span class="line">    <span class="built_in">i</span> = i1;</span><br><span class="line">    r = r1;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">plot(x,y);</span><br><span class="line">text(<span class="number">1</span>,y(<span class="number">1</span>),<span class="string">' \leftarrow s'</span>);</span><br><span class="line">hold on;</span><br><span class="line">plot(x,z);</span><br><span class="line">text(<span class="number">300</span>,z(<span class="number">300</span>),<span class="string">' \leftarrow i'</span>);</span><br><span class="line">hold on;</span><br><span class="line">plot(x,w);</span><br><span class="line">text(<span class="number">200</span>,w(<span class="number">200</span>),<span class="string">' \leftarrow e'</span>);</span><br><span class="line">hold on;</span><br><span class="line">plot(x,v);</span><br><span class="line">text(<span class="number">300</span>,v(<span class="number">300</span>),<span class="string">' \leftarrow r'</span>);</span><br></pre></td></tr></table></figure>
 
       
@@ -408,7 +408,7 @@
                 alt="Bi Zhen" />
             
               <p class="site-author-name" itemprop="name">Bi Zhen</p>
-              <p class="site-description motion-element" itemprop="description">毕祯，个人博客，个人网站</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
           <nav class="site-state motion-element">
@@ -431,7 +431,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
