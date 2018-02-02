@@ -533,9 +533,9 @@
 <p><strong>删除修复情况1：当前结点是黑+黑且兄弟结点为红色(此时父结点和兄弟结点的子结点分为黑)。</strong></p>
 <p>  解法：把父结点染成红色，把兄弟结点染成黑色，之后重新进入算法（我们只讨论当前结点是其父结点左孩子时的情况）。此变换后原红黑树性质5不变，而把问题转化为兄弟结点为黑色的情况(注：变化前，原本就未违反性质5，只是为了<strong>把问题转化为兄弟结点为黑色的情况</strong>)。  即如下代码操作：</p>
   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//调用RB-DELETE-FIXUP(T, x) 的1-8行代码</span><br><span class="line"> 1 while x ≠ root[T] and color[x] = BLACK</span><br><span class="line"> 2     do if x = left[p[x]]</span><br><span class="line"> 3           then w ← right[p[x]]</span><br><span class="line"> 4                if color[w] = RED</span><br><span class="line"> 5                   then color[w] ← BLACK                        ▹  Case 1</span><br><span class="line"> 6                        color[p[x]] ← RED                       ▹  Case 1</span><br><span class="line"> 7                        LEFT-ROTATE(T, p[x])                    ▹  Case 1</span><br><span class="line"> 8                        w ← right[p[x]]                         ▹  Case 1</span><br></pre></td></tr></table></figure>
-<p>变化前：  </p>
+<p>变化前：</p>
 <p><img src="http://p33egoprn.bkt.clouddn.com/7.jpg" alt=""></p>
-<p>变化后：  </p>
+<p>变化后：</p>
 <p><img src="http://p33egoprn.bkt.clouddn.com/8.jpg" alt=""></p>
 <p><strong>删除修复情况2：当前结点是黑加黑且兄弟是黑色且兄弟结点的两个子结点全为黑色。</strong></p>
 <p>  解法：把当前结点和兄弟结点中抽取一重黑色追加到父结点上，把父结点当成新的当前结点，重新进入算法。（此变换后性质5不变），即调用RB-INSERT-FIXUP(T, z) 的第9-10行代码操作，如下：</p>
